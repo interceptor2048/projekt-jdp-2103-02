@@ -1,6 +1,5 @@
 package com.kodilla.ecommercee.domain;
-
-import com.sun.tools.javac.util.List;
+import java.util.*;
 
 public class Group {
 
