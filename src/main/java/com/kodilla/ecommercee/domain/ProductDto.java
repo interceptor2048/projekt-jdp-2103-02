@@ -7,14 +7,18 @@ public class ProductDto {
     private String productName;
     private String productDescription;
     private BigDecimal price;
-    //private ProductGroup productGroup;
+    private Group productGroup;
 
-
-    public ProductDto(Long productId, String productName, String productDescription, BigDecimal price) {
+    public ProductDto(Long productId,
+                      String productName,
+                      String productDescription,
+                      BigDecimal price,
+                      Group productGroup) {
         this.productId = productId;
         this.productName = productName;
         this.productDescription = productDescription;
         this.price = price;
+        this.productGroup = productGroup;
     }
 
     public ProductDto() {
@@ -34,6 +38,14 @@ public class ProductDto {
 
     public BigDecimal getPrice() {
         return price;
+    }
+
+    public Group getProductGroup() {
+        return productGroup;
+    }
+
+    public void setProductGroup(Group productGroup) {
+        this.productGroup = productGroup;
     }
 
     public void setProductId(Long productId) {

@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee.controller;
 
+import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.domain.ProductDto;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
@@ -24,7 +25,9 @@ public class ProductController {
         return new ProductDto(1L,
                 "Test product",
                 "Test product description",
-                new BigDecimal(100.0));
+                new BigDecimal(100.0),
+                new Group(1L,
+                        "Test group name"));
     }
 
     @DeleteMapping(value = "deleteProduct")
@@ -38,7 +41,9 @@ public class ProductController {
         return new ProductDto(1L,
                 "Test update product",
                 "Test update description",
-                new BigDecimal(150.0));
+                new BigDecimal(150.0),
+                new Group(1L,
+                "Test group name"));
     }
 
     @PostMapping(value = "createProduct")
