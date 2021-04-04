@@ -20,7 +20,7 @@ public class ProductController {
     }
 
     @GetMapping(value = "getProduct")
-    public ProductDto getProduct(Long productId) {
+    public ProductDto getProduct(@RequestParam Long productId) {
         LOGGER.info("Product has been displayed");
         return new ProductDto(1L,
                 "Test product",
@@ -31,12 +31,12 @@ public class ProductController {
     }
 
     @DeleteMapping(value = "deleteProduct")
-    public void deleteProduct(Long productId) {
+    public void deleteProduct(@RequestParam Long productId) {
         LOGGER.info("Product has been deleted");
     }
 
     @PutMapping(value = "updateProduct")
-    public ProductDto updateProduct(ProductDto productDto) {
+    public ProductDto updateProduct(@RequestBody ProductDto productDto) {
         LOGGER.info("Product has been updated");
         return new ProductDto(1L,
                 "Test update product",
@@ -47,7 +47,7 @@ public class ProductController {
     }
 
     @PostMapping(value = "createProduct")
-    public void createProduct(ProductDto productDto) {
+    public void createProduct(@RequestBody ProductDto productDto) {
         LOGGER.info("Product has been created");
     }
 }

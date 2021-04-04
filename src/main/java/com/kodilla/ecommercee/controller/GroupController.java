@@ -27,19 +27,19 @@ public class GroupController {
     }
 
     @GetMapping(value = "getGroup")
-    public GroupDto getGroup(Long groupId) {
+    public GroupDto getGroup(@RequestParam Long groupId) {
         LOGGER.info("Group has been displayed");
         return new GroupDto(1L, "Test group 1");
     }
 
     @PutMapping(value = "updateGroup")
-    public GroupDto updateGroup(GroupDto groupDto) {
+    public GroupDto updateGroup(@RequestBody GroupDto groupDto) {
         LOGGER.info("Group has been updated");
         return new GroupDto(1L, "Test update group 1");
     }
 
     @PostMapping(value = "createGroup")
-    public void createGroup(GroupDto groupDto) {
+    public void createGroup(@RequestBody GroupDto groupDto) {
         LOGGER.info("Group has been created");
     }
 }
