@@ -1,41 +1,34 @@
 package com.kodilla.ecommercee.domain;
 
-import java.time.LocalDate;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "USERS")
+@NoArgsConstructor
 public class User {
 
+    @Id
     private Long userId;
     private String userName;
     private int status;
     private int userKey;
     private LocalDate expirationDate;
 
+    @OneToMany(
+            targetEntity = Order.class,
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    private List<Order> orders = new ArrayList<>();
 
-    public User(Long userId, String userName, int status, int userKey, LocalDate expirationDate) {
-        this.userId = userId;
-        this.userName = userName;
-        this.status = status;
-        this.userKey = userKey;
-        this.expirationDate = expirationDate;
-    }
 
-    public Long getUserId() {
-        return userId;
-    }
 
-    public String getUserName() {
-        return userName;
-    }
 
-    public int getStatus() {
-        return status;
-    }
-
-    public int getUserKey() {
-        return userKey;
-    }
-
-    public LocalDate getExpirationDate() {
-        return expirationDate;
-    }
 }
