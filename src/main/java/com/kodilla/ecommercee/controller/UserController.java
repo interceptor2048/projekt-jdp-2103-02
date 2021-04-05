@@ -35,5 +35,4 @@ public class UserController {
     public void createUser(@RequestBody UserDto userDto) {
     }
 
-
 }

@@ -50,4 +50,5 @@ public class ProductController {
     public void createProduct(@RequestBody ProductDto productDto) {
         LOGGER.info("Product has been created");
     }
+
 }
