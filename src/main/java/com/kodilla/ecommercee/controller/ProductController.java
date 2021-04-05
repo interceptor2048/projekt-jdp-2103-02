@@ -1,7 +1,7 @@
 package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.domain.Group;
-import com.kodilla.ecommercee.domain.ProductDto;
+import com.kodilla.ecommercee.dto.ProductDto;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
