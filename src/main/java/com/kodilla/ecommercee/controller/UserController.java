@@ -13,7 +13,7 @@ import java.util.List;
 public class UserController {
 
     @GetMapping(value = "getUser")
-    public UserDto getUser(Long id) {
+    public UserDto getUser(@RequestParam Long id) {
         return new UserDto(1L, "tester", 1, 123, LocalDate.of(2000,1,11) );
     }
 
@@ -23,16 +23,16 @@ public class UserController {
     }
 
     @DeleteMapping(value = "deleteUser")
-    public void deleteUser(Long id) {
+    public void deleteUser(@RequestParam Long id) {
     }
 
     @PutMapping(value = "updateUser")
-    public UserDto updateUser(UserDto userDto) {
+    public UserDto updateUser(@RequestBody UserDto userDto) {
         return new UserDto(1L, "tester", 1, 123, LocalDate.of(2000,2,10));
     }
 
     @PostMapping(value = "createUser")
-    public void createUser(UserDto userDto) {
+    public void createUser(@RequestBody UserDto userDto) {
     }
 
 
