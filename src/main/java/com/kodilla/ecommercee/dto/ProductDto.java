@@ -1,4 +1,6 @@
-package com.kodilla.ecommercee.domain;
+package com.kodilla.ecommercee.dto;
+
+import com.kodilla.ecommercee.domain.Group;
 
 import java.math.BigDecimal;
 
