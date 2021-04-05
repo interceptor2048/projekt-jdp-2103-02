@@ -8,8 +8,6 @@ import org.slf4j.LoggerFactory;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class ProductController {
-
 @RestController
 @RequestMapping("/v1/product")
 public class ProductController {
