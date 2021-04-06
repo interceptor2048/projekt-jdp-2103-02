@@ -10,6 +10,10 @@ public class Cart {
         this.cartId = cartId;
     }
 
+    public Cart() {
+
+    }
+
     public Long getCartId() {
         return cartId;
     }
