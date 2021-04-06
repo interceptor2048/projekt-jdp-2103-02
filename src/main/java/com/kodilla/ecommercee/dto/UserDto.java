@@ -1,7 +1,16 @@
 package com.kodilla.ecommercee.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class UserDto {
 
     private Long userId;
@@ -10,31 +19,4 @@ public class UserDto {
     private int userKey;
     private LocalDate expirationDate;
 
-    public UserDto(Long userId, String userName, int status, int userKey, LocalDate expirationDate) {
-        this.userId = userId;
-        this.userName = userName;
-        this.status = status;
-        this.userKey = userKey;
-        this.expirationDate = expirationDate;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public int getUserKey() {
-        return userKey;
-    }
-
-    public LocalDate getExpirationDate() {
-        return expirationDate;
-    }
 }
