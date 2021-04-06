@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee.domain;
 
+import java.util.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -8,6 +9,7 @@ import java.math.BigDecimal;
 public class Product {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long productId;
     private String productName;
     private String productDescription;
@@ -15,6 +17,9 @@ public class Product {
 
     @ManyToOne
     private Group productGroup;
+
+    @ManyToMany
+    private List<Item> items;
 
     public Product(Long productId,
                    String productName,
