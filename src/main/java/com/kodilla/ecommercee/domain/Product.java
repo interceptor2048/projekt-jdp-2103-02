@@ -1,12 +1,19 @@
 package com.kodilla.ecommercee.domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "PRODUCTS")
 public class Product {
+
+    @Id
     private Long productId;
     private String productName;
     private String productDescription;
     private BigDecimal price;
+
+    @ManyToOne
     private Group productGroup;
 
     public Product(Long productId,
