@@ -1,56 +1,43 @@
 package com.kodilla.ecommercee.domain;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "ORDERS")
+@NoArgsConstructor
+@Setter
 public class Order {
 
-    private Long orderId;
-    private boolean isPaid;
-    private boolean isSend;
-    private LocalDate orderDate;
-    //private User user;
-
-
-    public Order(Long orderId, boolean isPaid, boolean isSend, LocalDate orderDate) {
-        this.orderId = orderId;
+    public Order(boolean isPaid, boolean isSend, LocalDate orderDate) {
         this.isPaid = isPaid;
         this.isSend = isSend;
         this.orderDate = orderDate;
     }
 
-    public Order() {
+    @Id
+    @NotNull
+    @GeneratedValue
+    @Column(name = "ORDER_ID", unique = true)
+    private Long orderId;
 
-    }
+    @Column(name = "PAID_VERIFICATION")
+    private boolean isPaid;
 
-    public Long getOrderId() {
-        return orderId;
-    }
+    @Column(name = "SEND_VERIFICATION")
+    private boolean isSend;
 
-    public boolean isPaid() {
-        return isPaid;
-    }
+    @Column(name = "ORDER_DATE")
+    private LocalDate orderDate;
 
-    public boolean isSend() {
-        return isSend;
-    }
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
+    private User user;
 
-    public LocalDate getOrderDate() {
-        return orderDate;
-    }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
-    }
-
-    public void setPaid(boolean paid) {
-        isPaid = paid;
-    }
-
-    public void setSend(boolean send) {
-        isSend = send;
-    }
-
-    public void setOrderDate(LocalDate orderDate) {
-        this.orderDate = orderDate;
-    }
 }
