@@ -1,66 +1,41 @@
 package com.kodilla.ecommercee.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "PRODUCTS")
 public class Product {
+
+    @Id
+    @NotNull
+    @GeneratedValue
+    @Column(name = "PRODUCT_ID", unique = true)
     private Long productId;
+
+    @Column(name = "PRODUCT_NAME")
     private String productName;
+
+    @Column(name = "DESCRIPTION")
     private String productDescription;
+
+    @Column(name = "PRICE")
     private BigDecimal price;
+
+    @ManyToOne
+    @JoinColumn(name = "GROUP_ID")
     private Group productGroup;
 
-    public Product(Long productId,
-                   String productName,
-                   String productDescription,
-                   BigDecimal price,
-                   Group productGroup) {
-        this.productId = productId;
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.price = price;
-        this.productGroup = productGroup;
-    }
 
-    public Product() {
-    }
 
-    public Long getProductId() {
-        return productId;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public String getProductDescription() {
-        return productDescription;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public Group getProductGroup() {
-        return productGroup;
-    }
-
-    public void setProductGroup(Group productGroup) {
-        this.productGroup = productGroup;
-    }
-
-    public void setProductId(Long productId) {
-        this.productId = productId;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
 }
