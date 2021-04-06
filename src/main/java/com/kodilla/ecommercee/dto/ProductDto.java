@@ -18,4 +18,5 @@ public class ProductDto {
     private BigDecimal price;
     private Group productGroup;
 
+
 }
