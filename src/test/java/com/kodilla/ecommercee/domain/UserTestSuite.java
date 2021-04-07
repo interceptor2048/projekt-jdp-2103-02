@@ -61,7 +61,7 @@ public class UserTestSuite {
         long id = user.getUserId();
 
         //Then
-        assertEquals(1L, id);
+        assertNotEquals(0L, id);
 
         //Clean Up
         userRepository.deleteById(id);
