@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,14 +12,10 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "ORDERS")
 @NoArgsConstructor
+@AllArgsConstructor
 @Setter
+@Getter
 public class Order {
-
-    public Order(boolean isPaid, boolean isSend, LocalDate orderDate) {
-        this.isPaid = isPaid;
-        this.isSend = isSend;
-        this.orderDate = orderDate;
-    }
 
     @Id
     @NotNull
