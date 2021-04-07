@@ -25,7 +25,7 @@ public class Order {
 
     @Id
     @NotNull
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ORDER_ID", unique = true)
     private Long orderId;
 

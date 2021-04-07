@@ -8,13 +8,11 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
-
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -29,6 +27,8 @@ public class UserTestSuite {
 
     @Autowired
     private CartRepository cartRepository;
+
+
 
 
     @Test
@@ -81,10 +81,13 @@ public class UserTestSuite {
         user.getOrders().add(order);
         user.getOrders().add(order2);
 
+
+
         // When
         userRepository.save(user);
         orderRepository.save(order);
         orderRepository.save(order2);
+
 
         long userId = user.getUserId();
         long orderId = order.getOrderId();
@@ -92,15 +95,18 @@ public class UserTestSuite {
         int ordersUser = user.getOrders().size();
 
 
+
+
         //Then
-        assertEquals(1L, userId);
-        assertEquals(2L, orderId);
-        assertEquals(3L, orderId2);
+        assertNotEquals(0L, userId);
+        assertNotEquals(0L, orderId);
+        assertNotEquals(0L, orderId2);
         assertEquals(2, ordersUser);
 
 
         //Clean Up
-        userRepository.deleteById(user.getUserId());
+        userRepository.delete(user);
+
 
 
     }
@@ -117,26 +123,23 @@ public class UserTestSuite {
         cart.setUser(user);
         cart1.setUser(user);
 
+
         userRepository.save(user);
         cartRepository.save(cart);
         cartRepository.save(cart1);
+
 
         long userId = user.getUserId();
         int userCarts = user.getCart().size();
 
 
         //Then
-        assertEquals(1L, userId);
+        assertNotEquals(0L, userId);
         assertEquals(2, userCarts);
 
 
         // Clean Up
-        userRepository.deleteById(userId);
-
-
-
-
-
+        userRepository.delete(user);
 
     }
 
