@@ -93,14 +93,15 @@ public class UserTestSuite {
 
 
         //Then
-        assertEquals(7L, userId);
-        assertEquals(8L, orderId);
-        assertEquals(9L, orderId2);
+        assertEquals(1L, userId);
+        assertEquals(2L, orderId);
+        assertEquals(3L, orderId2);
         assertEquals(2, ordersUser);
 
 
         //Clean Up
         userRepository.deleteById(user.getUserId());
+
 
     }
 
@@ -125,7 +126,7 @@ public class UserTestSuite {
 
 
         //Then
-        assertEquals(4L, userId);
+        assertEquals(1L, userId);
         assertEquals(2, userCarts);
 
 
