@@ -19,9 +19,16 @@ import java.util.List;
 @Setter
 public class User {
 
+    public User(@NotNull String userName, @NotNull int status, @NotNull int userKey, @NotNull LocalDate expirationDate) {
+        this.userName = userName;
+        this.status = status;
+        this.userKey = userKey;
+        this.expirationDate = expirationDate;
+    }
+
     @Id
     @NotNull
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "USER_ID", unique = true)
     private Long userId;
 

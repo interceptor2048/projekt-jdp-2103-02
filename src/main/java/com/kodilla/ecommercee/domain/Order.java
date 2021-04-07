@@ -17,6 +17,12 @@ import java.time.LocalDate;
 @Getter
 public class Order {
 
+    public Order(boolean isPaid, boolean isSend, LocalDate orderDate) {
+        this.isPaid = isPaid;
+        this.isSend = isSend;
+        this.orderDate = orderDate;
+    }
+
     @Id
     @NotNull
     @GeneratedValue
