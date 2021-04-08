@@ -20,7 +20,7 @@ public class Product {
 
     @Id
     @NotNull
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "PRODUCT_ID", unique = true)
     private Long productId;
 
@@ -33,19 +33,18 @@ public class Product {
     @Column(name = "PRICE")
     private BigDecimal price;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "GROUP_ID")
     private Group productGroup;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.ALL})
     private List<Item> items;
 
-    public Product(Long productId,
+    public Product(
                    String productName,
                    String productDescription,
                    BigDecimal price,
                    Group productGroup) {
-        this.productId = productId;
         this.productName = productName;
         this.productDescription = productDescription;
         this.price = price;
