@@ -95,8 +95,6 @@ public class GroupTestSuite {
         assertEquals(2, testProductList.size());
 
         //Clean repository
-        productRepository.deleteById(testProduct1Id);
-        productRepository.deleteById(testProduct2Id);
         groupRepository.deleteById(testGroupId);
     }
 }
