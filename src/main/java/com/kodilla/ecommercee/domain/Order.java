@@ -1,9 +1,11 @@
 package com.kodilla.ecommercee.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -23,6 +25,13 @@ public class Order {
         this.orderDate = orderDate;
     }
 
+    public Order(@NotNull Long orderId, boolean isPaid, boolean isSend, LocalDate orderDate) {
+        this.orderId = orderId;
+        this.isPaid = isPaid;
+        this.isSend = isSend;
+        this.orderDate = orderDate;
+    }
+
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,6 +44,7 @@ public class Order {
     @Column(name = "SEND_VERIFICATION")
     private boolean isSend;
 
+    @JsonFormat(pattern = "yyyy-mm-dd", shape = JsonFormat.Shape.STRING)
     @Column(name = "ORDER_DATE")
     private LocalDate orderDate;
 
