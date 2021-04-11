@@ -33,11 +33,8 @@ public class Item {
         this.product = product;
     }
 
-    /*
-    @ManyToOne (
-            targetEntity = Cart.class,
-            mappedBy = "item",
-            fetch = FetchType.LAZY
-    )
-    private Cart cart;*/
+
+    @ManyToOne
+    @JoinColumn(name = "CART_ID")
+    private Cart cart;
 }
