@@ -67,7 +67,7 @@ public class OrderTestSuite {
         //Given
         Order order = new Order(true, false, LocalDate.of(1999, 5, 30));
         Order order1 = new Order(false, true, LocalDate.of(2021, 7, 25));
-        User user = new User ("TestName", 1, 12345, LocalDate.of(2021, 5, 10));
+        User user = new User ("TestName");
 
         order.setUser(user);
         order1.setUser(user);

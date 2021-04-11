@@ -7,9 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Entity
 @Table(name = "USERS")
@@ -19,11 +18,27 @@ import java.util.List;
 @Setter
 public class User {
 
-    public User(@NotNull String userName, @NotNull int status, @NotNull int userKey, @NotNull LocalDate expirationDate) {
+    public User(@NotNull Long userId, @NotNull String userName, @NotNull boolean status) {
+        this.userId = userId;
+        this.userName = userName;
+        this.status = status;
+        this.userKey = generateUserKey();
+        this.expirationDate = LocalDateTime.now().plusHours(1);
+    }
+
+    public User (@NotNull Long userId, @NotNull String userName, @NotNull boolean status, @NotNull int userKey) {
+        this.userId = userId;
         this.userName = userName;
         this.status = status;
         this.userKey = userKey;
-        this.expirationDate = expirationDate;
+        this.expirationDate = LocalDateTime.now().plusHours(1);
+    }
+
+    public User (@NotNull String userName) {
+        this.userName = userName;
+        status = true;
+        userKey = generateUserKey();
+        this.expirationDate = LocalDateTime.now().plusHours(1);
     }
 
     @Id
@@ -38,15 +53,14 @@ public class User {
 
     @NotNull
     @Column(name = "STATUS")
-    private int status;
+    private boolean status;
 
     @NotNull
     @Column(name = "USER_KEY")
     private int userKey;
 
-    @NotNull
     @Column(name = "EXPIRATION_DATE")
-    private LocalDate expirationDate;
+    private LocalDateTime expirationDate;
 
     @OneToMany(
             targetEntity = Order.class,
@@ -64,7 +78,9 @@ public class User {
     )
     private List<Cart> cart = new ArrayList<>();
 
-
-
-
+    public int generateUserKey() {
+        Random randomGenerator = new Random();
+        this.expirationDate = LocalDateTime.now().plusHours(1);
+        return (randomGenerator.nextInt(90000) + 10000);
+    }
 }
