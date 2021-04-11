@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -19,14 +21,24 @@ public class Cart {
     @Id
     @NotNull
     @GeneratedValue
-    @Column(name = "CARD_ID")
+    @Column(name = "CART_ID")
     private Long cartId;
 
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
 
-//    private Order order;
+    @OneToOne
+    @JoinColumn(name = "ORDER_ID")
+    private Order order;
+
+    @OneToMany(
+            targetEntity = Item.class,
+            mappedBy = "cart",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    private List<Item> items = new ArrayList<>();
 
 
 }
