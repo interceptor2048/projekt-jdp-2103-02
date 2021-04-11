@@ -4,19 +4,21 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDate;
+import java.util.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
 public class UserDto {
-
     private Long userId;
     private String userName;
-    private int status;
-    private int userKey;
-    private LocalDate expirationDate;
+    private boolean status = true;
+    private int userKey = userKeyGenerator();
 
+    private int userKeyGenerator() {
+        Random randomGenerator = new Random();
+
+        return (randomGenerator.nextInt(90000) + 10000);
+    }
 }
