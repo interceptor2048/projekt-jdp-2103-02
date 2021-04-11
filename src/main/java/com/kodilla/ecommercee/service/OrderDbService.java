@@ -1,35 +1,35 @@
-package com.kodilla.ecommercee.service;
-
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.kodilla.ecommercee.domain.Order;
+import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.repository.OrderRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@AllArgsConstructor
-@Transactional
 @Service
+@RequiredArgsConstructor
 public class OrderDbService {
 
-    private final OrderRepository repository;
+    private final OrderRepository orderRepository;
 
     public List<Order> getAllOrders() {
-        return repository.findAll();
+        return orderRepository.findAll();
     }
 
     public Optional<Order> getOrderById(final Long orderId) {
-        return repository.findById(orderId);
+        return orderRepository.findById(orderId);
     }
 
     public Order save(final Order order) {
-        return repository.save(order);
+        return orderRepository.save(order);
     }
 
     public void deleteOrderById(final Long orderId) {
-        repository.deleteById(orderId);
+        orderRepository.deleteById(orderId);
     }
-
 }
