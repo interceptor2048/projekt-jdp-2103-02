@@ -126,14 +126,17 @@ public class ProductTestSuite {
         Product product1 = new Product("Product1 Name", "Product1 Description", new BigDecimal(110), group);
         Product product2 = new Product("Product2 Name", "Product2 Description", new BigDecimal(110), group);
 
+        Cart cart1 = new Cart(1L, 2L, 3L);
+        Cart cart2 = new Cart(6L, 5L, 4L);
+
         List<Product> products1 = new ArrayList<>();
         products1.add(product1);
 
         List<Product> products2 = new ArrayList<>();
         products2.add(product2);
 
-        Item item1 = new Item(products1);
-        Item item2 = new Item(products2);
+        Item item1 = new Item(products1, cart1);
+        Item item2 = new Item(products2, cart2);
 
         List<Item> items1 = new ArrayList<>();
         items1.add(item1);

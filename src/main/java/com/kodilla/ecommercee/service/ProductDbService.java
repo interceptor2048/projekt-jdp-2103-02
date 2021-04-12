@@ -18,8 +18,8 @@ public class ProductDbService {
         return repository.findAll();
     }
 
-    public Optional<Product> getProductById(final Long productId) {
-        return repository.findById(productId);
+    public Product getProductById(final Long productId) {
+        return repository.findById(productId).orElse(null);
     }
 
     public Product save(final Product product) {

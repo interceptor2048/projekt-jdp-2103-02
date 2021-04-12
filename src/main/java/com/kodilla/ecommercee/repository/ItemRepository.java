@@ -17,6 +17,8 @@ public interface ItemRepository extends CrudRepository<Item, Long> {
     @Override
     public Optional<Item> findById(Long itemId);
 
+    List<Item> findByCart(Long cartId);
+
     @Override
     public Item save(Item item);
 

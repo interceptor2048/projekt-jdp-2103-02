@@ -51,5 +51,7 @@ public class Order {
     @JoinColumn(name = "USER_ID")
     private User user;
 
+    @OneToOne
+    private Cart cart;
 
 }

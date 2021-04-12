@@ -9,7 +9,6 @@ import java.util.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -22,16 +21,17 @@ public class Item {
     @Column(name = "ITEM_ID")
     private Long itemId;
 
+    public Item(List<Product> product, Cart cart) {
+        this.cart = cart;
+        this.product = product;
+    }
+
     @ManyToMany (
             targetEntity = Product.class,
             mappedBy = "items",
             fetch = FetchType.LAZY
     )
     private List<Product> product;
-
-    public Item(List<Product> product) {
-        this.product = product;
-    }
 
 
     @ManyToOne
