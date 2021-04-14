@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -23,6 +22,10 @@ public class Cart {
     @GeneratedValue
     @Column(name = "CART_ID")
     private Long cartId;
+
+    public Cart(@NotNull Long cartId, @NotNull Long userId, @NotNull Long orderId) {
+        this.cartId = cartId;
+    }
 
     @ManyToOne
     @JoinColumn(name = "USER_ID")
