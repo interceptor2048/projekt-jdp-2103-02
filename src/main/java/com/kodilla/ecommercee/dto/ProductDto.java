@@ -1,13 +1,10 @@
 package com.kodilla.ecommercee.dto;
 
-import com.kodilla.ecommercee.domain.Group;
-import com.kodilla.ecommercee.domain.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.math.BigDecimal;
-import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,10 +15,15 @@ public class ProductDto {
     private String productName;
     private String productDescription;
     private BigDecimal price;
-    private Group productGroup;
-    private List<Item> item;
+    private Long groupId;
 
-
-    public ProductDto(Long productId, String productName, String productDescription, BigDecimal price) {
+    public ProductDto(String productName,
+                      String productDescription,
+                      BigDecimal price,
+                      Long groupId) {
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.price = price;
+        this.groupId = groupId;
     }
 }

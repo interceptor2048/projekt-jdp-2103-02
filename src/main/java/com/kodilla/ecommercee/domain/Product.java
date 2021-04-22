@@ -1,6 +1,5 @@
 package com.kodilla.ecommercee.domain;
 
-
 import java.util.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,11 +39,22 @@ public class Product {
     @ManyToMany(cascade = {CascadeType.ALL})
     private List<Item> items;
 
-    public Product(
+    public Product(String productName,
+                   String productDescription,
+                   BigDecimal price,
+                   Group productGroup) {
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.price = price;
+        this.productGroup = productGroup;
+    }
+
+    public Product(@NotNull Long productId,
                    String productName,
                    String productDescription,
                    BigDecimal price,
                    Group productGroup) {
+        this.productId = productId;
         this.productName = productName;
         this.productDescription = productDescription;
         this.price = price;
