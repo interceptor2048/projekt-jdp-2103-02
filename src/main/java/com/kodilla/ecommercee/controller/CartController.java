@@ -38,12 +38,12 @@ public class CartController {
     }
 
     @GetMapping(value = "getCart")
-    public CartDto getCart(@RequestParam Long cartId) {
+    public CartDto getCart(@RequestParam long cartId) {
         return cartMapper.mapToCartDto(cartDbService.getCartById(cartId));
     }
 
     @PutMapping(value = "addItemToCart")
-    public CartDto addItemToCart1(@RequestParam Long cartId, @RequestParam Long itemId) {
+    public CartDto addItemToCart1(@RequestParam long cartId, @RequestParam long itemId) {
         Item item = itemDbService.getItem(itemId);
         Cart cart = cartDbService.getCartById(cartId);
         cart.getItems().add(item);
@@ -52,7 +52,7 @@ public class CartController {
     }
 
     @DeleteMapping(value = "deleteItemFromCart")
-    public void deleteItemFromCart(@RequestParam Long cartId, @RequestParam Long itemId) {
+    public void deleteItemFromCart(@RequestParam long cartId, @RequestParam long itemId) {
         Item item = itemDbService.getItem(itemId);
         Cart cart = cartDbService.getCartById(cartId);
         cart.getItems().remove(item);

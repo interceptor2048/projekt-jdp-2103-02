@@ -23,7 +23,8 @@ public class CartDbService {
     }
 
     public Cart getCartById(Long cartId) {
-        return cartRepository.findById(cartId).orElse(new Cart());
+        Cart cart = cartRepository.findById(cartId).orElse(new Cart());
+        return cart;
     }
 
     public Cart save(final Cart cart) {

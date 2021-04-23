@@ -1,6 +1,8 @@
 package com.kodilla.ecommercee.mapper;
 
 import com.kodilla.ecommercee.domain.Cart;
+import com.kodilla.ecommercee.domain.Order;
+import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.dto.CartDto;
 import com.kodilla.ecommercee.service.ItemDbService;
 import com.kodilla.ecommercee.service.OrderDbService;
@@ -33,10 +35,13 @@ public class CartMapper {
     }
 
     public Cart mapToCart(final CartDto cartDto) {
+        User user = userDbService.getUserById(cartDto.getUserId()).orElse(null);
+        Order order = orderDbService.getOrderById(cartDto.getOrderId()).orElse(null);
         return new Cart(
                 cartDto.getCartId(),
-                cartDto.getUserId(),
-                cartDto.getOrderId()
+                user,
+                order,
+                null
         );
     }
 
