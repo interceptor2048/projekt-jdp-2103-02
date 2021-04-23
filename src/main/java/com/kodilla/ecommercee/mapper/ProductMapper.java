@@ -1,23 +1,29 @@
 package com.kodilla.ecommercee.mapper;
 
+import com.kodilla.ecommercee.domain.Group;
 import com.kodilla.ecommercee.domain.Product;
 import com.kodilla.ecommercee.dto.ProductDto;
+import com.kodilla.ecommercee.exceptions.GroupNotFoundException;
+import com.kodilla.ecommercee.service.GroupDbService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
 public class ProductMapper {
+    @Autowired
+    private GroupDbService groupDbService;
 
-    public Product mapToProduct(final ProductDto productDto) {
+    public Product mapToProduct(final ProductDto productDto) throws GroupNotFoundException {
+        Group group = groupDbService.getGroupById(productDto.getGroupId()).orElseThrow(GroupNotFoundException::new);
         return new Product(
                 productDto.getProductId(),
                 productDto.getProductName(),
                 productDto.getProductDescription(),
                 productDto.getPrice(),
-                productDto.getProductGroup(),
-                productDto.getItem()
+                group
         );
     }
 
@@ -27,8 +33,7 @@ public class ProductMapper {
                 product.getProductName(),
                 product.getProductDescription(),
                 product.getPrice(),
-                product.getProductGroup(),
-                product.getItems()
+                product.getProductGroup().getGroupId()
         );
     }
 
@@ -38,9 +43,11 @@ public class ProductMapper {
                 .collect(Collectors.toList());
     }
 
-    public List<Product> mapToProductList(final List<ProductDto> productDtoList) {
-        return productDtoList.stream()
-                .map(this::mapToProduct)
-                .collect(Collectors.toList());
+    public List<Product> mapToProductList(final List<ProductDto> productDtoList) throws GroupNotFoundException {
+        List<Product> list = new ArrayList<>();
+        for (ProductDto element : productDtoList){
+            list.add(mapToProduct(element));
+        }
+        return list;
     }
 }
