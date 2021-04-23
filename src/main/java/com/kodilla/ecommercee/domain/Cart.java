@@ -12,6 +12,7 @@ import java.util.List;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Table(name = "CARTS")
@@ -21,9 +22,9 @@ public class Cart {
     @NotNull
     @GeneratedValue
     @Column(name = "CART_ID")
-    private Long cartId;
+    private long cartId;
 
-    public Cart(@NotNull Long cartId, @NotNull Long userId, @NotNull Long orderId) {
+    public Cart(@NotNull long cartId, @NotNull Long userId, @NotNull Long orderId) {
         this.cartId = cartId;
     }
 
