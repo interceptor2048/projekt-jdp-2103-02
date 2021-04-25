@@ -26,7 +26,7 @@ public class User {
         this.expirationDate = LocalDateTime.now().plusHours(1);
     }
 
-    public User (@NotNull Long userId, @NotNull String userName, @NotNull boolean status, @NotNull int userKey) {
+    public User (@NotNull Long userId,  String userName,  boolean status,  int userKey) {
         this.userId = userId;
         this.userName = userName;
         this.status = status;
@@ -34,7 +34,7 @@ public class User {
         this.expirationDate = LocalDateTime.now().plusHours(1);
     }
 
-    public User (@NotNull String userName) {
+    public User ( String userName) {
         this.userName = userName;
         status = true;
         userKey = generateUserKey();

@@ -20,7 +20,7 @@ public class Cart {
 
     @Id
     @NotNull
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "CART_ID")
     private long cartId;
 
@@ -32,7 +32,7 @@ public class Cart {
     @JoinColumn(name = "USER_ID")
     private User user;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "ORDER_ID")
     private Order order;
 
