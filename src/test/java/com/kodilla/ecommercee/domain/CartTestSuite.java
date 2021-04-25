@@ -167,7 +167,7 @@ public class CartTestSuite {
         assertEquals(true, orderPaid);
 
         // Clean Up
-        orderRepository.deleteById(orderId);
-        cartRepository.deleteById(cartId);
+//        orderRepository.deleteById(orderId);
+//        cartRepository.deleteById(cartId);
     }
 }

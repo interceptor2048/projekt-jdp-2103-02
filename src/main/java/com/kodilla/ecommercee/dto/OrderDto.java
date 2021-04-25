@@ -14,10 +14,12 @@ import java.time.LocalDate;
 @Setter
 public class OrderDto {
 
-    private Long orderId;
+    private long orderId;
     private boolean isPaid;
     private boolean isSend;
     private LocalDate orderDate;
+    private long userId;
+    private long cartId;
 
 
 
